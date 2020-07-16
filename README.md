@@ -1,10 +1,10 @@
-# Solar System
+# GLSL shader noises
 
 To install, run
 
 `npm install`
 
-To view our solar system, run
+To view the shaders:
 
 `npm run start`
 
