@@ -1,0 +1,84 @@
+{
+  "scripts": {
+    "lint:eslint": "eslint --ext .ts,.html . --ignore-path .gitignore",
+    "format:eslint": "eslint --ext .ts,.html . --fix --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.js\" \"**/*.ts\" --check --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.js\" \"**/*.ts\" --write --ignore-path .gitignore",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "test": "tsc && karma start --coverage",
+    "test:watch": "concurrently --kill-others --names tsc,karma \"npm run tsc:watch\" \"karma start --auto-watch=true --single-run=false\"",
+    "storybook": "concurrently --kill-others --names tsc,storybook \"npm run tsc:watch\" \"start-storybook --node-resolve --watch --open\"",
+    "storybook:build": "build-storybook",
+    "build": "rimraf dist && tsc && rollup -c rollup.config.js",
+    "start:build": "npm run build && es-dev-server --root-dir dist --app-index index.html --open --compatibility none",
+    "start": "concurrently --kill-others --names tsc,es-dev-server \"npm run tsc:watch\" \"es-dev-server --app-index index.html --node-resolve --open --watch\"",
+    "tsc:watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "@open-wc/building-rollup": "^1.0.0",
+    "@open-wc/demoing-storybook": "^2.0.0",
+    "@open-wc/eslint-config": "^2.0.0",
+    "@open-wc/rollup-plugin-html": "^1.1.0",
+    "@open-wc/testing": "^2.0.0",
+    "@open-wc/testing-karma": "^3.0.0",
+    "@types/node": "13.11.1",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "concurrently": "^5.1.0",
+    "deepmerge": "^3.2.0",
+    "es-dev-server": "^1.5.0",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-flowtype": "^5.1.3",
+    "eslint-plugin-html": "^6.0.2",
+    "eslint-plugin-lit": "^1.2.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-unicorn": "^20.1.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.0.0",
+    "prettier": "^2.0.4",
+    "rimraf": "^2.6.3",
+    "rollup": "^2.3.4",
+    "tslib": "^1.11.0",
+    "typescript": "~3.8.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "name": "test-test",
+  "version": "0.0.0",
+  "description": "Webcomponent test-test following open-wc recommendations",
+  "author": "test-test",
+  "license": "MIT",
+  "dependencies": {
+    "lit-element": "^2.0.1",
+    "lit-html": "^1.0.0",
+    "rollup-plugin-glslify": "^1.2.0",
+    "sinon": "^9.0.2",
+    "three": "^0.118.3"
+  }
+}
