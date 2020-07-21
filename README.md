@@ -1,5 +1,7 @@
 # GLSL shader noises
 
+![FBM noise](/src/assets/images/fbm.png)
+
 To install, run
 
 `npm install`
