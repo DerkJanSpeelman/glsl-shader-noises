@@ -17,6 +17,7 @@ export class StyleProvider extends LitElement {
         }
         html {
             font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {

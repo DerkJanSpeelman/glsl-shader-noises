@@ -2,8 +2,6 @@ import merge from 'deepmerge';
 // use createSpaConfig for bundling a Single Page App
 import { createSpaConfig } from '@open-wc/building-rollup';
 
-import glslify from 'rollup-plugin-glslify';
-
 // use createBasicConfig to do regular JS to JS bundling
 // import { createBasicConfig } from '@open-wc/building-rollup';
 
@@ -26,8 +24,6 @@ export default merge(baseConfig, {
     // if you use createSpaConfig, you can use your index.html as entrypoint,
     // any <script type="module"> inside will be bundled by rollup
     input: './index.html',
-
-    plugins: [glslify()],
 
     // alternatively, you can use your JS as entrypoint for rollup and
     // optionally set a HTML template manually

@@ -77,7 +77,6 @@
   "dependencies": {
     "lit-element": "^2.0.1",
     "lit-html": "^1.0.0",
-    "rollup-plugin-glslify": "^1.2.0",
     "sinon": "^9.0.2",
     "three": "^0.118.3"
   }
